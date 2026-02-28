@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfólio — Totti</title>
+  <meta name="description" content="Portfólio com projetos, fotos e contato." />
+
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121a33;
+      --muted:#93a4c7;
+      --text:#eaf0ff;
+      --line:#22305a;
+      --accent:#ff4fa3;
+      --accent2:#6aa8ff;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1050px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(255,79,163,.25), transparent 60%),
+        radial-gradient(900px 500px at 90% 0%, rgba(106,168,255,.22), transparent 55%),
+        linear-gradient(180deg, #060914, var(--bg));
+      color:var(--text);
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 70px}
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(6,9,20,.7);
+      border-bottom: 1px solid rgba(34,48,90,.5);
+    }
+    .nav{
+      max-width:var(--max); margin:0 auto;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 18px;
+    }
+    .brand{
+      display:flex; gap:10px; align-items:center;
+      font-weight:700; letter-spacing:.2px;
+    }
+    .dot{
+      width:12px; height:12px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(255,79,163,.12);
+    }
+    .links{display:flex; gap:14px; flex-wrap:wrap}
+    .links a{
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:600;
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+    }
+    .links a:hover{
+      color:var(--text);
+      border-color: rgba(34,48,90,.7);
+      background: rgba(18,26,51,.6);
+    }
+
+    .hero{
+      padding:34px 0 10px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:center;
+    }
+    @media (max-width: 860px){
+      .hero{grid-template-columns:1fr; padding-top:22px}
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(18,26,51,.92), rgba(18,26,51,.75));
+      border:1px solid rgba(34,48,90,.75);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero .left{padding:26px}
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      color:var(--muted);
+      font-weight:700;
+      letter-spacing:.2px;
+      margin-bottom:10px;
+    }
+    .pill{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(34,48,90,.9);
+      background: rgba(6,9,20,.35);
+      color:var(--muted);
+    }
+    h1{
+      margin:0 0 10px;
+      font-size: 42px;
+      line-height:1.06;
+      letter-spacing:-.6px;
+    }
+    .sub{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.6;
+    }
+    .cta{display:flex; gap:10px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:8px;
+      text-decoration:none;
+      padding:11px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(34,48,90,.9);
+      background: rgba(6,9,20,.25);
+      color:var(--text);
+      font-weight:800;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(255,79,163,.95), rgba(106,168,255,.92));
+      border-color: transparent;
+      color:#0b1020;
+    }
+
+    .hero .right{padding:18px}
+    .profile{
+      display:grid;
+      grid-template-columns: 110px 1fr;
+      gap:14px;
+      align-items:center;
+      padding:18px;
+    }
+    .avatar{
+      width:110px; height:110px; border-radius: 22px;
+      object-fit:cover;
+      border:1px solid rgba(34,48,90,.9);
+      background: rgba(6,9,20,.35);
+    }
+    .profile h2{margin:0; font-size:18px}
+    .profile p{margin:6px 0 0; color:var(--muted); line-height:1.5}
+    .stats{
+      display:grid; grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+      padding:0 18px 18px;
+    }
+    .stat{
+      padding:12px;
+      border-radius: 14px;
+      border:1px solid rgba(34,48,90,.7);
+      background: rgba(6,9,20,.25);
+    }
+    .stat b{display:block; font-size:16px}
+    .stat span{color:var(--muted); font-size:12px}
+
+    section{margin-top:22px}
+    .section-title{
+      display:flex; align-items:end; justify-content:space-between;
+      gap:12px; flex-wrap:wrap;
+      margin: 12px 0;
+    }
+    .section-title h3{margin:0; font-size:20px}
+    .section-title p{margin:0; color:var(--muted)}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 980px){ .grid{grid-template-columns: repeat(2, 1fr);} }
+    @media (max-width: 640px){ .grid{grid-template-columns: 1fr;} }
+
+    .proj{padding:16px}
+    .tagrow{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+    .tag{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(34,48,90,.8);
+      color:var(--muted);
+      background: rgba(6,9,20,.2);
+    }
+    .proj h4{margin:0 0 8px}
+    .proj p{margin:0; color:var(--muted); line-height:1.55}
+    .proj .actions{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
+    .mini{
+      font-size:13px;
+      padding:9px 11px;
+      border-radius:12px;
+      border:1px solid rgba(34,48,90,.8);
+      text-decoration:none;
+      color:var(--text);
+      background: rgba(6,9,20,.25);
+      font-weight:800;
+    }
+    .mini:hover{transform: translateY(-1px)}
+    .mini.primary{
+      background: rgba(255,79,163,.18);
+      border-color: rgba(255,79,163,.35);
+    }
+
+    .photos{padding:16px}
+    .photo-grid{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:10px;
+    }
+    @media (max-width: 980px){ .photo-grid{grid-template-columns: repeat(3,1fr);} }
+    @media (max-width: 640px){ .photo-grid{grid-template-columns: repeat(2,1fr);} }
+    .photo-grid img{
+      width:100%; height:170px;
+      object-fit:cover;
+      border-radius: 16px;
+      border:1px solid rgba(34,48,90,.8);
+      background: rgba(6,9,20,.25);
+    }
+
+    .about{padding:18px}
+    .about p{margin:0; color:var(--muted); line-height:1.75}
+
+    footer{
+      margin-top:26px;
+      padding:18px;
+      border-top:1px solid rgba(34,48,90,.6);
+      color:var(--muted);
+      text-align:center;
+    }
+    .note{font-size:12px; color:var(--muted); margin-top:8px}
+    .sep{height:1px; background: rgba(34,48,90,.6); margin:18px 0}
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="nav">
+    <div class="brand"><span class="dot"></span> Totti • Portfólio</div>
+    <nav class="links">
+      <a href="#sobre">Sobre</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#fotos">Fotos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <div class="card left">
+      <div class="kicker">
+        <span class="pill">HTML • CSS • GitHub Pages</span>
+        <span class="pill">Portfólio</span>
+      </div>
+      <h1>Olá, eu sou o <span style="color:var(--accent)">Totti</span> 👋</h1>
+      <p class="sub">
+        Aqui eu mostro um pouco sobre mim, algumas fotos e os projetos que eu já fiz.
+        <br/>Troque os textos e links pelos seus.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="#projetos">Ver projetos</a>
+        <a class="btn" href="https://github.com/SEUUSUARIO" target="_blank" rel="noreferrer">Meu GitHub</a>
+        <a class="btn" href="#contato">Contato</a>
+      </div>
+      <div class="note">Dica: substitua <b>SEUUSUARIO</b> no link do GitHub acima.</div>
+    </div>
+
+    <aside class="card right">
+      <div class="profile">
+        <!-- Troque a imagem abaixo por uma sua (veja a seção "Como colocar fotos") -->
+        <img class="avatar" src="assets/minha-foto.jpg" alt="Foto do Totti" onerror="this.src='https://picsum.photos/220';" />
+        <div>
+          <h2>Totti Araújo</h2>
+          <p>Estudante / Dev em evolução • Projetos em HTML, CSS, JS • Sempre aprendendo 🚀</p>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>+10</b><span>Projetos</span></div>
+        <div class="stat"><b>2026</b><span>Atualizado</span></div>
+        <div class="stat"><b>Brasil</b><span>Fortaleza</span></div>
+      </div>
+    </aside>
+  </div>
+
+  <section id="sobre" class="card about">
+    <div class="section-title">
+      <h3>Sobre mim</h3>
+      <p>Um resumo rápido (edite aqui)</p>
+    </div>
+    <p>
+      Eu curto tecnologia e estou construindo meus projetos para evoluir como desenvolvedor.
+      Gosto de aprender fazendo: páginas web, automações simples e interfaces bonitas.
+      <!-- Edite esse texto com seu estilo -->
+    </p>
+  </section>
+
+  <section id="projetos">
+    <div class="section-title">
+      <h3>Projetos</h3>
+      <p>Cards com link para demo e repositório</p>
+    </div>
+
+    <div class="grid">
+      <!-- PROJETO 1 -->
+      <article class="card proj">
+        <h4>Calculadora Web</h4>
+        <p>Uma calculadora simples com interface bonita e responsiva.</p>
+        <div class="tagrow">
+          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+        </div>
+        <div class="actions">
+          <a class="mini primary" href="#" target="_blank" rel="noreferrer">Ver demo</a>
+          <a class="mini" href="#" target="_blank" rel="noreferrer">Ver código</a>
+        </div>
+      </article>
+
+      <!-- PROJETO 2 -->
+      <article class="card proj">
+        <h4>Página de Login</h4>
+        <p>Layout de login com validação básica e modo escuro.</p>
+        <div class="tagrow">
+          <span class="tag">UI</span><span class="tag">Forms</span><span class="tag">Front-end</span>
+        </div>
+        <div class="actions">
+          <a class="mini primary" href="#" target="_blank" rel="noreferrer">Ver demo</a>
+          <a class="mini" href="#" target="_blank" rel="noreferrer">Ver código</a>
+        </div>
+      </article>
+
+      <!-- PROJETO 3 -->
+      <article class="card proj">
+        <h4>Portfólio (este site)</h4>
+        <p>Template com seções: sobre, projetos, fotos e contato.</p>
+        <div class="tagrow">
+          <span class="tag">GitHub Pages</span><span class="tag">Responsivo</span><span class="tag">SEO básico</span>
+        </div>
+        <div class="actions">
+          <a class="mini primary" href="#contato">Me chamar</a>
+          <a class="mini" href="https://github.com/SEUUSUARIO" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="fotos" class="card photos">
+    <div class="section-title">
+      <h3>Fotos</h3>
+      <p>Coloque imagens suas (ou dos seus projetos)</p>
+    </div>
+
+    <div class="photo-grid">
+      <!-- Troque os src pelos seus arquivos em /assets -->
+      <img src="assets/foto1.jpg" alt="Foto 1" onerror="this.src='https://picsum.photos/600/400?1';" />
+      <img src="assets/foto2.jpg" alt="Foto 2" onerror="this.src='https://picsum.photos/600/400?2';" />
+      <img src="assets/foto3.jpg" alt="Foto 3" onerror="this.src='https://picsum.photos/600/400?3';" />
+      <img src="assets/foto4.jpg" alt="Foto 4" onerror="this.src='https://picsum.photos/600/400?4';" />
+    </div>
+
+    <div class="note">
+      Para ficar 100% seu, crie a pasta <b>assets</b> e envie suas imagens com esses nomes:
+      <b>minha-foto.jpg</b>, <b>foto1.jpg</b>, <b>foto2.jpg</b>, <b>foto3.jpg</b>, <b>foto4.jpg</b>.
+    </div>
+  </section>
+
+  <section id="contato" class="card about">
+    <div class="section-title">
+      <h3>Contato</h3>
+      <p>Links rápidos</p>
+    </div>
+    <p>
+      Email: <b>seuemail@exemplo.com</b> •
+      GitHub: <b>@SEUUSUARIO</b> •
+      LinkedIn: <b>seu-link</b>
+    </p>
+    <div class="sep"></div>
+    <p class="note">
+      Dica: depois eu posso te ajudar a colocar um formulário de contato (com Formspree) ou WhatsApp.
+    </p>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Totti • Feito com HTML + CSS • Hospedado no GitHub Pages
+  </footer>
+</main>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
